@@ -40,8 +40,6 @@ exports.getCustomers = async (req, res) => {
 exports.updateCustomer = async (req, res) => {
   try {
     const findCustomer = await Customer.findOne({ email: req.body.email });
-    if (findCustomer)
-      return res.status(400).json({ msg: "Email already exists" });
     const updatedCustomer = await Customer.findByIdAndUpdate(
       req.params.id,
       req.body,
